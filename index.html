@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soluții pentru Industrii | AutomateIQ</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+        :root {
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --secondary: #a855f7;
+            --dark: #1e293b;
+            --light: #f1f5f9;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--dark);
+            background-color: #f8fafc;
+            scroll-behavior: smooth;
+        }
+        .gradient-text {
+            background: linear-gradient(90deg, var(--primary) 0%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #a855f7 100%);
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.3s ease;
+        }
+        .glass-card:hover {
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+            transform: translateY(-2px);
+        }
+        .industry-card {
+            transition: all 0.3s ease;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        .industry-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        .industry-image {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 12px 12px 0 0;
+        }
+        .challenge-badge {
+            display: inline-block;
+            background-color: #f1f5f9;
+            color: #475569;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+        .solution-point {
+            position: relative;
+            padding-left: 1.75rem;
+            margin-bottom: 1rem;
+        }
+        .solution-point:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #4f46e5;
+            font-weight: bold;
+        }
+        .sticky-nav {
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+        .sticky-nav.scrolled {
+            background-color: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+            border-bottom: 1px solid rgba(241, 245, 249, 0.8);
+        }
+        .nav-link {
+            position: relative;
+        }
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: var(--primary);
+            transition: width 0.3s ease;
+        }
+        .nav-link.active, .nav-link:hover:after {
+            width: 100%;
+        }
+        .nav-link.active {
+            color: var(--primary) !important;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Navigation -->
+    <nav id="navbar" class="sticky-nav fixed top-0 w-full z-40 bg-white/80 py-4 px-6 lg:px-16 border-b border-slate-100">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <a href="../index-ro.html" class="flex items-center">
+                <div class="w-10 h-10 rounded-lg gradient-bg flex items-center justify-center text-white font-bold text-xl mr-2">AIQ</div>
+                <span class="text-xl font-bold text-slate-900">AutomateIQ</span>
+            </a>
+            <div class="hidden md:flex items-center space-x-6">
+                <div class="flex items-center space-x-8">
+                    <a href="../solutions/servicii.html" class="nav-link text-slate-700 hover:text-indigo-600 transition font-medium">Soluții</a>
+                    <a href="#" class="nav-link active text-indigo-600 font-medium">Industrii</a>
+                    <a href="../index-ro.html#blog" class="nav-link text-slate-600 hover:text-indigo-600 transition font-medium">Blog</a>
+                    <a href="../despre.html" class="nav-link text-slate-600 hover:text-indigo-600 transition font-medium">Despre</a>
+                    <a href="../index-ro.html#careers" class="nav-link text-slate-600 hover:text-indigo-600 transition font-medium">Cariere</a>
+                </div>
+                <div class="flex items-center border border-slate-200 rounded-lg p-1 space-x-1">
+                    <a href="../industries.html" class="px-3 py-1.5 text-sm font-medium text-slate-600 rounded-md hover:bg-slate-100 transition-colors">EN</a>
+                    <span class="px-3 py-1.5 text-sm font-medium text-white gradient-bg rounded-md cursor-default">RO</span>
+                </div>
+                <button class="relative overflow-hidden group bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white px-5 py-2.5 rounded-lg transition-all duration-300 shadow hover:shadow-md font-medium">
+                    <span class="relative z-10">Consultanță Gratuită</span>
+                </button>
+            </div>
+            <button id="mobileMenuButton" class="md:hidden text-slate-600">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+        </div>
+        
+        <div id="mobileMenu" class="hidden md:hidden bg-white absolute top-full left-0 right-0 shadow-lg py-4 px-6">
+            <a href="../solutions/servicii.html" class="block py-3 text-slate-600 hover:text-indigo-600 font-medium border-b border-slate-100">Soluții</a>
+            <a href="#" class="block py-3 text-indigo-600 font-medium border-b border-slate-100">Industrii</a>
+            <a href="../index-ro.html#blog" class="block py-3 text-slate-600 hover:text-indigo-600 font-medium border-b border-slate-100">Blog</a>
+            <a href="../despre.html" class="block py-3 text-slate-600 hover:text-indigo-600 font-medium border-b border-slate-100">Despre</a>
+            <a href="../index-ro.html#careers" class="block py-3 text-slate-600 hover:text-indigo-600 font-medium border-b border-slate-100">Cariere</a>
+            <div class="pt-4 pb-2">
+                <div class="flex items-center border border-slate-200 rounded-lg p-1 space-x-1 w-min">
+                    <a href="../industries.html" class="px-3 py-1.5 text-sm font-medium text-slate-600 rounded-md hover:bg-slate-100 transition-colors">EN</a>
+                    <span class="px-3 py-1.5 text-sm font-medium text-white gradient-bg rounded-md cursor-default">RO</span>
+                </div>
+            </div>
+             <button class="mt-4 w-full bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-4 py-3 rounded-lg transition shadow hover:shadow-md font-medium">
+                Consultanță Gratuită
+            </button>
+        </div>
+    </nav>
+
+    <main class="pt-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="text-center mb-16">
+                <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+                    Soluții <span class="gradient-text">Adaptate</span> Industriei Tale
+                </h1>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Suntem specializați în adaptarea soluțiilor de automatizare și AI pentru a răspunde provocărilor unice ale sectorului dumneavoastră. Abordarea noastră combină tehnologia cu o înțelegere profundă a industriei.
+                </p>
+            </div>
+            
+            <div class="glass-card p-8 mb-16">
+                <div class="flex flex-col md:flex-row items-center">
+                    <div class="md:w-2/3 md:pr-8">
+                        <h2 class="text-2xl font-bold text-gray-800 mb-4">De Ce Contează Soluțiile Specifice Industriei</h2>
+                        <p class="text-gray-600 mb-4">
+                            Deși tehnologia este versatilă, precizia este esențială. Soluțiile generice oferă rezultate generice. Noi oferim automatizări țintite care abordează nuanțele domeniului dumneavoastră, ajutându-vă să navigați transformările digitale și să eficientizați fluxurile de lucru critice.
+                        </p>
+                        <p class="text-gray-600">
+                            Multe organizații nu au echipe dedicate pentru automatizare. Aici intervenim noi - ca partenerii dumneavoastră în implementarea de soluții care aduc o diferență reală în operațiunile și profitabilitatea afacerii.
+                        </p>
+                    </div>
+                    <div class="md:w-1/3 mt-8 md:mt-0">
+                        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=2070&auto=format&fit=crop" 
+                             alt="Echipă colaborând la o soluție personalizată" class="w-full rounded-lg">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+                <div class="industry-card bg-white shadow-md hover:shadow-lg">
+                    <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" 
+                         alt="Contabilitate & Finanțe" class="industry-image">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-4">Contabilitate & Finanțe</h3>
+                        <p class="text-gray-600 mb-4">Automatizarea operațiunilor financiare pentru o mai mare precizie și eficiență.</p>
+                        
+                        <div class="mb-4">
+                            <h4 class="font-semibold text-gray-700 mb-2">Provocări Cheie:</h4>
+                            <div>
+                                <span class="challenge-badge">Introducere manuală date</span>
+                                <span class="challenge-badge">Corelare cheltuieli</span>
+                                <span class="challenge-badge">Rapoarte de conformitate</span>
+                                <span class="challenge-badge">Silozuri de date</span>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <h4 class="font-semibold text-gray-700 mb-2">Soluțiile Noastre:</h4>
+                            <ul>
+                                <li class="solution-point">Procesare inteligentă a facturilor și documentelor</li>
+                                <li class="solution-point">Management al inbox-ului financiar cu ajutorul AI</li>
+                                <li class="solution-point">Dashboard-uri financiare dinamice, în timp real</li>
+                                <li class="solution-point">Monitorizare automată a conformității</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="industry-card bg-white shadow-md hover:shadow-lg">
+                    <img src="https://images.unsplash.com/photo-1555529669-e69e7aa0ba9a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" 
+                         alt="E-commerce & Retail" class="industry-image">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-4">E-commerce & Retail</h3>
+                        <p class="text-gray-600 mb-4">Eficientizarea operațiunilor pentru a vă putea concentra pe creștere.</p>
+                        
+                        <div class="mb-4">
+                            <h4 class="font-semibold text-gray-700 mb-2">Provocări Cheie:</h4>
+                            <div>
+                                <span class="challenge-badge">Acuratețea stocurilor</span>
+                                <span class="challenge-badge">Prețurile concurenței</span>
+                                <span class="challenge-badge">Procesarea comenzilor</span>
+                                <span class="challenge-badge">Supraîncărcare cu date</span>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <h4 class="font-semibold text-gray-700 mb-2">Soluțiile Noastre:</h4>
+                            <ul>
+                                <li class="solution-point">Management automatizat al datelor despre clienți și vânzări</li>
+                                <li class="solution-point">Monitorizare dinamică a prețurilor concurenței</li>
+                                <li class="solution-point">Curățarea și organizarea datelor</li>
+                                <li class="solution-point">Analize de vânzări instantanee</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="industry-card bg-white shadow-md hover:shadow-lg">
+                    <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" 
+                         alt="Logistică & Lanț de Aprovizionare" class="industry-image">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-4">Logistică & Lanț de Aprovizionare</h3>
+                        <p class="text-gray-600 mb-4">Aducem claritate în operațiuni complexe.</p>
+                        
+                        <div class="mb-4">
+                            <h4 class="font-semibold text-gray-700 mb-2">Provocări Cheie:</h4>
+                            <div>
+                                <span class="challenge-badge">Urmărirea livrărilor</span>
+                                <span class="challenge-badge">Exces de documente</span>
+                                <span class="challenge-badge">Optimizarea rutelor</span>
+                                <span class="challenge-badge">Întârzieri date de pe teren</span>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <h4 class="font-semibold text-gray-700 mb-2">Soluțiile Noastre:</h4>
+                            <ul>
+                                <li class="solution-point">Extragere automată din documente de transport</li>
+                                <li class="solution-point">Dashboard-uri live pentru logistică și performanță</li>
+                                <li class="solution-point">Tablouri de bord în timp real</li>
+                                <li class="solution-point">Rutare eficientă a datelor și documentelor de pe teren</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="industry-card bg-white shadow-md hover:shadow-lg">
+                    <img src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" 
+                         alt="Juridic & Conformitate" class="industry-image">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-4">Juridic & Conformitate</h3>
+                        <p class="text-gray-600 mb-4">Management securizat al documentelor pentru echipele juridice.</p>
+                        
+                        <div class="mb-4">
+                            <h4 class="font-semibold text-gray-700 mb-2">Provocări Cheie:</h4>
+                            <div>
+                                <span class="challenge-badge">Volum mare de documente</span>
+                                <span class="challenge-badge">Revizuire contracte</span>
+                                <span class="challenge-badge">Monitorizare reglementări</span>
+                                <span class="challenge-badge">Securitatea datelor</span>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <h4 class="font-semibold text-gray-700 mb-2">Soluțiile Noastre:</h4>
+                            <ul>
+                                <li class="solution-point">Soluții AI securizate, instalate local (on-premise)</li>
+                                <li class="solution-point">Analiză și revizuire a contractelor cu ajutorul AI</li>
+                                <li class="solution-point">Instrumente automate de monitorizare a conformității</li>
+                                <li class="solution-point">Portaluri de cunoștințe juridice cu acces rapid</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="industry-card bg-white shadow-md hover:shadow-lg">
+                    <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" 
+                         alt="Sănătate" class="industry-image">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-4">Sănătate</h3>
+                        <p class="text-gray-600 mb-4">Eficientizarea sarcinilor administrative pentru a vă concentra pe îngrijirea pacienților.</p>
+                        
+                        <div class="mb-4">
+                            <h4 class="font-semibold text-gray-700 mb-2">Provocări Cheie:</h4>
+                            <div>
+                                <span class="challenge-badge">Formulare pacienți</span>
+                                <span class="challenge-badge">Verificare asigurări</span>
+                                <span class="challenge-badge">Volum de documente</span>
+                                <span class="challenge-badge">Conformitate HIPAA</span>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <h4 class="font-semibold text-gray-700 mb-2">Soluțiile Noastre:</h4>
+                            <ul>
+                                <li class="solution-point">Captură inteligentă a datelor din formularele pacienților</li>
+                                <li class="solution-point">AI securizat (on-premise) pentru sarcini administrative</li>
+                                <li class="solution-point">Automatizarea fluxurilor de lucru</li>
+                                <li class="solution-point">Integrări simplificate cu sistemele EHR</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="industry-card bg-white shadow-md hover:shadow-lg">
+                    <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" 
+                         alt="Imobiliare" class="industry-image">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-4">Imobiliare</h3>
+                        <p class="text-gray-600 mb-4">Automatizarea fluxurilor de lucru în managementul proprietăților.</p>
+                        
+                        <div class="mb-4">
+                            <h4 class="font-semibold text-gray-700 mb-2">Provocări Cheie:</h4>
+                            <div>
+                                <span class="challenge-badge">Managementul chiriilor</span>
+                                <span class="challenge-badge">Actualizarea listărilor</span>
+                                <span class="challenge-badge">Comunicare cu chiriașii</span>
+                                <span class="challenge-badge">Urmărire clienți potențiali</span>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <h4 class="font-semibold text-gray-700 mb-2">Soluțiile Noastre:</h4>
+                            <ul>
+                                <li class="solution-point">Extragerea și analiza contractelor de închiriere cu AI</li>
+                                <li class="solution-point">Listări automate</li>
+                                <li class="solution-point">Boți inteligenți pentru comunicarea cu chiriașii</li>
+                                <li class="solution-point">Dashboard-uri de performanță a portofoliului în timp real</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="glass-card p-8 text-center mt-16">
+                <h2 class="text-2xl font-bold text-gray-800 mb-4">Industria Dumneavoastră Nu Este pe Listă?</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto mb-6">
+                    Soluțiile noastre sunt adaptabile pentru multe sectoare. Haideți să discutăm cum putem personaliza expertiza noastră în automatizare și AI pentru nevoile specifice ale afacerii dumneavoastră.
+                </p>
+                <button class="bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-3 px-8 rounded-lg transition duration-300 transform hover:scale-105">
+                    Programați o Consultanță
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-slate-900 text-slate-300 py-16 px-6 lg:px-16 mt-16">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid md:grid-cols-4 gap-12">
+                <div>
+                    <div class="flex items-center mb-6">
+                        <div class="w-10 h-10 rounded-lg gradient-bg flex items-center justify-center text-white font-bold text-xl mr-2">AIQ</div>
+                        <span class="text-xl font-bold text-white">AutomateIQ</span>
+                    </div>
+                    <p class="mb-6 text-slate-400">
+                        Soluții de automatizare bazate pe AI care ajută afacerile să lucreze mai inteligent.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-slate-400 hover:text-white transition"><i class="fab fa-twitter text-xl"></i></a>
+                        <a href="#" class="text-slate-400 hover:text-white transition"><i class="fab fa-linkedin text-xl"></i></a>
+                        <a href="#" class="text-slate-400 hover:text-white transition"><i class="fab fa-facebook text-xl"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold text-lg mb-6">Soluții</h4>
+                    <ul class="space-y-3">
+                        <li><a href="../solutions/servicii.html" class="hover:text-white transition text-slate-400">Automatizarea Fluxurilor</a></li>
+                        <li><a href="../solutions/servicii.html" class="hover:text-white transition text-slate-400">AI pentru Documente</a></li>
+                        <li><a href="../solutions/servicii.html" class="hover:text-white transition text-slate-400">Transformarea Datelor</a></li>
+                        <li><a href="../solutions/servicii.html" class="hover:text-white transition text-slate-400">Asistenți AI</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold text-lg mb-6">Companie</h4>
+                    <ul class="space-y-3">
+                        <li><a href="../despre.html" class="hover:text-white transition text-slate-400">Despre Noi</a></li>
+                        <li><a href="../index-ro.html#careers" class="hover:text-white transition text-slate-400">Cariere</a></li>
+                        <li><a href="../index-ro.html#blog" class="hover:text-white transition text-slate-400">Blog</a></li>
+                        <li><a href="#" class="hover:text-white transition text-slate-400">Contact</a></li>
+                    </ul>
+                </div>
+                 <div>
+                    <h4 class="text-white font-bold text-lg mb-6">Resurse</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="hover:text-white transition text-slate-400">Documentație</a></li>
+                        <li><a href="#" class="hover:text-white transition text-slate-400">Referință API</a></li>
+                        <li><a href="#" class="hover:text-white transition text-slate-400">Comunitate</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-slate-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-slate-400">© 2025 AutomateIQ. Toate drepturile rezervate.</p>
+                <div class="mt-4 md:mt-0">
+                    <a href="#" class="text-slate-400 hover:text-white mr-6">Politică de Confidențialitate</a>
+                    <a href="#" class="text-slate-400 hover:text-white">Termeni și Condiții</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        const mobileMenuButton = document.getElementById('mobileMenuButton');
+        const mobileMenu = document.getElementById('mobileMenu');
+       
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            const barsIcon = mobileMenuButton.querySelector('.fa-bars');
+            const timesIcon = mobileMenuButton.querySelector('.fa-times');
+            barsIcon.classList.toggle('hidden');
+            timesIcon.classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html>
