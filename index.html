@@ -3,441 +3,427 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Soluții pentru Industrii | AutomateIQ</title>
+    <title>Țara Oașului - Destinație Turistică Premium</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#2c5a39', // Verde pădure
+                        secondary: '#b39359', // Auriu ocru
+                        accent: '#c44536', // Roșu aprins
+                        light: '#f8f5f0', // Bej deschis
+                        dark: '#1e2b22'   // Verde închis
+                    }
+                }
+            }
+        }
+    </script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
-        :root {
-            --primary: #6366f1;
-            --primary-dark: #4f46e5;
-            --secondary: #a855f7;
-            --dark: #1e293b;
-            --light: #f1f5f9;
-        }
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600&display=swap');
+        
         body {
-            font-family: 'Inter', sans-serif;
-            color: var(--dark);
-            background-color: #f8fafc;
-            scroll-behavior: smooth;
+            font-family: 'Poppins', sans-serif;
+            background-color: #f8f5f0;
+            color: #1e2b22;
         }
-        .gradient-text {
-            background: linear-gradient(90deg, var(--primary) 0%, var(--secondary) 100%);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
+        
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
         }
-        .gradient-bg {
-            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #a855f7 100%);
+        
+        .handwritten {
+            font-family: 'Dancing Script', cursive;
         }
-        .glass-card {
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(10px);
-            border-radius: 16px;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.3);
+        
+        .asymmetric-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+        
+        @media (min-width: 768px) {
+            .asymmetric-grid {
+                grid-template-columns: repeat(4, 1fr);
+                grid-template-rows: auto auto;
+                grid-template-areas: 
+                    "a a b c"
+                    "a a d d";
+            }
+            .gallery-item:nth-child(1) { grid-area: a; min-height: 500px; }
+            .gallery-item:nth-child(2) { grid-area: b; }
+            .gallery-item:nth-child(3) { grid-area: c; }
+            .gallery-item:nth-child(4) { grid-area: d; }
+        }
+        
+        .dropdown:hover .dropdown-menu {
+            display: block;
+        }
+        
+        .menu-btn {
             transition: all 0.3s ease;
         }
-        .glass-card:hover {
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
-            transform: translateY(-2px);
+        
+        .hero-overlay {
+            background: linear-gradient(to top, rgba(30, 43, 34, 0.8) 0%, rgba(30, 43, 34, 0.3) 50%, transparent 100%);
         }
-        .industry-card {
-            transition: all 0.3s ease;
-            border-radius: 12px;
-            overflow: hidden;
-        }
-        .industry-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-        }
-        .industry-image {
-            width: 100%;
-            height: 180px;
-            object-fit: cover;
-            border-radius: 12px 12px 0 0;
-        }
-        .challenge-badge {
-            display: inline-block;
-            background-color: #f1f5f9;
-            color: #475569;
-            padding: 0.25rem 0.75rem;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            margin-right: 0.5rem;
-            margin-bottom: 0.5rem;
-        }
-        .solution-point {
-            position: relative;
-            padding-left: 1.75rem;
-            margin-bottom: 1rem;
-        }
-        .solution-point:before {
-            content: "✓";
-            position: absolute;
-            left: 0;
-            color: #4f46e5;
-            font-weight: bold;
-        }
-        .sticky-nav {
-            transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
-        }
-        .sticky-nav.scrolled {
-            background-color: rgba(255, 255, 255, 0.98);
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
-            border-bottom: 1px solid rgba(241, 245, 249, 0.8);
-        }
-        .nav-link {
-            position: relative;
-        }
-        .nav-link:after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -2px;
-            left: 0;
-            background-color: var(--primary);
-            transition: width 0.3s ease;
-        }
-        .nav-link.active, .nav-link:hover:after {
-            width: 100%;
-        }
-        .nav-link.active {
-            color: var(--primary) !important;
+        
+        .event-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
         }
     </style>
 </head>
-<body class="antialiased">
-
-    <!-- Navigation -->
-    <nav id="navbar" class="sticky-nav fixed top-0 w-full z-40 bg-white/80 py-4 px-6 lg:px-16 border-b border-slate-100">
-        <div class="max-w-7xl mx-auto flex justify-between items-center">
-            <a href="../index-ro.html" class="flex items-center">
-                <div class="w-10 h-10 rounded-lg gradient-bg flex items-center justify-center text-white font-bold text-xl mr-2">AIQ</div>
-                <span class="text-xl font-bold text-slate-900">AutomateIQ</span>
-            </a>
-            <div class="hidden md:flex items-center space-x-6">
-                <div class="flex items-center space-x-8">
-                    <a href="../solutions/servicii.html" class="nav-link text-slate-700 hover:text-indigo-600 transition font-medium">Soluții</a>
-                    <a href="#" class="nav-link active text-indigo-600 font-medium">Industrii</a>
-                    <a href="../index-ro.html#blog" class="nav-link text-slate-600 hover:text-indigo-600 transition font-medium">Blog</a>
-                    <a href="../despre.html" class="nav-link text-slate-600 hover:text-indigo-600 transition font-medium">Despre</a>
-                    <a href="../index-ro.html#careers" class="nav-link text-slate-600 hover:text-indigo-600 transition font-medium">Cariere</a>
-                </div>
-                <div class="flex items-center border border-slate-200 rounded-lg p-1 space-x-1">
-                    <a href="../industries.html" class="px-3 py-1.5 text-sm font-medium text-slate-600 rounded-md hover:bg-slate-100 transition-colors">EN</a>
-                    <span class="px-3 py-1.5 text-sm font-medium text-white gradient-bg rounded-md cursor-default">RO</span>
-                </div>
-                <button class="relative overflow-hidden group bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white px-5 py-2.5 rounded-lg transition-all duration-300 shadow hover:shadow-md font-medium">
-                    <span class="relative z-10">Consultanță Gratuită</span>
-                </button>
+<body>
+    <!-- Header & Navigation -->
+    <header class="fixed top-0 w-full z-50 bg-white shadow-md">
+        <div class="container mx-auto px-4 flex justify-between items-center py-4">
+            <div class="flex items-center">
+                <i class="fas fa-mountain text-accent text-2xl mr-2"></i>
+                <span class="text-xl font-bold text-primary">Țara Oașului</span>
             </div>
-            <button id="mobileMenuButton" class="md:hidden text-slate-600">
-                <i class="fas fa-bars text-2xl"></i>
+            
+            <!-- Desktop Navigation -->
+            <nav class="hidden md:block">
+                <ul class="flex space-x-8">
+                    <li class="dropdown relative">
+                        <a href="#" class="hover:text-accent font-semibold text-dark flex items-center">DESCOPERĂ <i class="fas fa-chevron-down ml-1 text-xs"></i></a>
+                        <div class="dropdown-menu absolute hidden bg-white py-2 rounded shadow-lg w-60">
+                            <a href="#" class="block px-4 py-2 hover:bg-light">Istoria zonei</a>
+                            <a href="#" class="block px-4 py-2 hover:bg-light">Comorile culturale</a>
+                            <a href="#" class="block px-4 py-2 hover:bg-light">Personalități</a>
+                        </div>
+                    </li>
+                    <li><a href="#" class="hover:text-accent font-semibold text-dark">UNDE POȚI DORMI</a></li>
+                    <li class="dropdown relative">
+                        <a href="#" class="hover:text-accent font-semibold text-dark flex items-center">CE SĂ MĂNÂNCI ȘI CE SĂ BEI <i class="fas fa-chevron-down ml-1 text-xs"></i></a>
+                        <div class="dropdown-menu absolute hidden bg-white py-2 rounded shadow-lg w-60">
+                            <a href="#" class="block px-4 py-2 hover:bg-light">Restaurante recomandate</a>
+                            <a href="#" class="block px-4 py-2 hover:bg-light">Specialități locale</a>
+                            <a href="#" class="block px-4 py-2 hover:bg-light">Vinării</a>
+                        </div>
+                    </li>
+                    <li><a href="#" class="hover:text-accent font-semibold text-dark">CE SĂ VIZITEZI</a></li>
+                    <li class="dropdown relative">
+                        <a href="#" class="hover:text-accent font-semibold text-dark flex items-center">CE POȚI FACE <i class="fas fa-chevron-down ml-1 text-xs"></i></a>
+                        <div class="dropdown-menu absolute hidden bg-white py-2 rounded shadow-lg w-60">
+                            <a href="#" class="block px-4 py-2 hover:bg-light">Activități în natură</a>
+                            <a href="#" class="block px-4 py-2 hover:bg-light">Ateliere tradiționale</a>
+                            <a href="#" class="block px-4 py-2 hover:bg-light">Excursii tematice</a>
+                        </div>
+                    </li>
+                    <li><a href="#" class="hover:text-accent font-semibold text-dark">EVENIMENTE</a></li>
+                    <li><a href="#" class="hover:text-accent font-semibold text-dark">INFO UTILE</a></li>
+                </ul>
+            </nav>
+            
+            <!-- Mobile Menu Button -->
+            <button id="menu-toggle" class="md:hidden focus:outline-none">
+                <i class="fas fa-bars text-xl text-dark"></i>
             </button>
         </div>
         
-        <div id="mobileMenu" class="hidden md:hidden bg-white absolute top-full left-0 right-0 shadow-lg py-4 px-6">
-            <a href="../solutions/servicii.html" class="block py-3 text-slate-600 hover:text-indigo-600 font-medium border-b border-slate-100">Soluții</a>
-            <a href="#" class="block py-3 text-indigo-600 font-medium border-b border-slate-100">Industrii</a>
-            <a href="../index-ro.html#blog" class="block py-3 text-slate-600 hover:text-indigo-600 font-medium border-b border-slate-100">Blog</a>
-            <a href="../despre.html" class="block py-3 text-slate-600 hover:text-indigo-600 font-medium border-b border-slate-100">Despre</a>
-            <a href="../index-ro.html#careers" class="block py-3 text-slate-600 hover:text-indigo-600 font-medium border-b border-slate-100">Cariere</a>
-            <div class="pt-4 pb-2">
-                <div class="flex items-center border border-slate-200 rounded-lg p-1 space-x-1 w-min">
-                    <a href="../industries.html" class="px-3 py-1.5 text-sm font-medium text-slate-600 rounded-md hover:bg-slate-100 transition-colors">EN</a>
-                    <span class="px-3 py-1.5 text-sm font-medium text-white gradient-bg rounded-md cursor-default">RO</span>
-                </div>
-            </div>
-             <button class="mt-4 w-full bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-4 py-3 rounded-lg transition shadow hover:shadow-md font-medium">
-                Consultanță Gratuită
-            </button>
+        <!-- Mobile Navigation -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white py-4 px-4 border-t">
+            <ul class="space-y-3">
+                <li><a href="#" class="block font-semibold text-dark hover:text-accent">DESCOPERĂ</a></li>
+                <li><a href="#" class="block font-semibold text-dark hover:text-accent">UNDE POȚI DORMI</a></li>
+                <li><a href="#" class="block font-semibold text-dark hover:text-accent">CE SĂ MĂNÂNCI ȘI CE SĂ BEI</a></li>
+                <li><a href="#" class="block font-semibold text-dark hover:text-accent">CE SĂ VIZITEZI</a></li>
+                <li><a href="#" class="block font-semibold text-dark hover:text-accent">CE POȚI FACE</a></li>
+                <li><a href="#" class="block font-semibold text-dark hover:text-accent">EVENIMENTE</a></li>
+                <li><a href="#" class="block font-semibold text-dark hover:text-accent">INFO UTILE</a></li>
+            </ul>
         </div>
-    </nav>
+    </header>
 
-    <main class="pt-16">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <!-- Hero Section -->
+    <section class="relative h-screen flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 bg-gray-900">
+            <!-- Hero Image -->
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Costume_traditional_Oas.jpg/1280px-Costume_traditional_Oas.jpg"
+                 alt="Costume populare din Țara Oașului"
+                 class="w-full h-full object-cover opacity-90">
+            <div class="absolute inset-0 hero-overlay"></div>
+        </div>
+        
+        <div class="relative z-10 text-center px-4 max-w-4xl mt-16">
+            <h1 class="text-4xl md:text-6xl font-bold text-white mb-4">Bine ați venit în Țara Oașului!</h1>
+            <p class="text-xl md:text-2xl text-white mb-8">Găsește Cazare, Restaurante și Experiențe Unice</p>
+            
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="#activities" class="bg-accent hover:bg-red-600 text-white font-semibold py-3 px-6 rounded-full transition transform hover:scale-105 flex items-center">
+                    <i class="fas fa-hiking mr-2"></i> Top Activități
+                </a>
+                <a href="#dining" class="bg-secondary hover:bg-amber-600 text-white font-semibold py-3 px-6 rounded-full transition transform hover:scale-105 flex items-center">
+                    <i class="fas fa-utensils mr-2"></i> Top Restaurante
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section: Comorile Noastre -->
+    <section class="py-20 px-4 bg-light">
+        <div class="container mx-auto max-w-6xl">
             <div class="text-center mb-16">
-                <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-                    Soluții <span class="gradient-text">Adaptate</span> Industriei Tale
-                </h1>
-                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-                    Suntem specializați în adaptarea soluțiilor de automatizare și AI pentru a răspunde provocărilor unice ale sectorului dumneavoastră. Abordarea noastră combină tehnologia cu o înțelegere profundă a industriei.
-                </p>
+                <span class="text-secondary font-semibold uppercase tracking-wider">Tradiție Vie</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-primary mt-2">Comorile Noastre</h2>
+                <div class="mt-4 mb-6 w-20 h-1 bg-accent mx-auto"></div>
+                <p class="max-w-2xl mx-auto text-lg text-gray-600">Descoperă meșteșugurile străvechi care fac din Țara Oașului un sanctuar al culturii și artelor populare.</p>
             </div>
             
-            <div class="glass-card p-8 mb-16">
-                <div class="flex flex-col md:flex-row items-center">
-                    <div class="md:w-2/3 md:pr-8">
-                        <h2 class="text-2xl font-bold text-gray-800 mb-4">De Ce Contează Soluțiile Specifice Industriei</h2>
-                        <p class="text-gray-600 mb-4">
-                            Deși tehnologia este versatilă, precizia este esențială. Soluțiile generice oferă rezultate generice. Noi oferim automatizări țintite care abordează nuanțele domeniului dumneavoastră, ajutându-vă să navigați transformările digitale și să eficientizați fluxurile de lucru critice.
-                        </p>
-                        <p class="text-gray-600">
-                            Multe organizații nu au echipe dedicate pentru automatizare. Aici intervenim noi - ca partenerii dumneavoastră în implementarea de soluții care aduc o diferență reală în operațiunile și profitabilitatea afacerii.
-                        </p>
+            <div class="asymmetric-grid">
+                <div class="gallery-item rounded-xl overflow-hidden relative group">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Ceramic_Oas.jpg/1280px-Ceramic_Oas.jpg" alt="Ceramica de Vama" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-80"></div>
+                    <div class="absolute bottom-0 left-0 p-6 text-white">
+                        <h3 class="text-xl font-bold">Ceramica de Vama</h3>
+                        <p class="mt-1">Artă olărească ce a străbătut secole</p>
                     </div>
-                    <div class="md:w-1/3 mt-8 md:mt-0">
-                        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=2070&auto=format&fit=crop" 
-                             alt="Echipă colaborând la o soluție personalizată" class="w-full rounded-lg">
-                    </div>
-                </div>
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-                <div class="industry-card bg-white shadow-md hover:shadow-lg">
-                    <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" 
-                         alt="Contabilitate & Finanțe" class="industry-image">
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-gray-800 mb-4">Contabilitate & Finanțe</h3>
-                        <p class="text-gray-600 mb-4">Automatizarea operațiunilor financiare pentru o mai mare precizie și eficiență.</p>
-                        
-                        <div class="mb-4">
-                            <h4 class="font-semibold text-gray-700 mb-2">Provocări Cheie:</h4>
-                            <div>
-                                <span class="challenge-badge">Introducere manuală date</span>
-                                <span class="challenge-badge">Corelare cheltuieli</span>
-                                <span class="challenge-badge">Rapoarte de conformitate</span>
-                                <span class="challenge-badge">Silozuri de date</span>
-                            </div>
-                        </div>
-                        
-                        <div>
-                            <h4 class="font-semibold text-gray-700 mb-2">Soluțiile Noastre:</h4>
-                            <ul>
-                                <li class="solution-point">Procesare inteligentă a facturilor și documentelor</li>
-                                <li class="solution-point">Management al inbox-ului financiar cu ajutorul AI</li>
-                                <li class="solution-point">Dashboard-uri financiare dinamice, în timp real</li>
-                                <li class="solution-point">Monitorizare automată a conformității</li>
-                            </ul>
-                        </div>
+                    <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition bg-black bg-opacity-40">
+                        <span class="text-white font-semibold border border-white px-4 py-2 rounded">Află mai multe</span>
                     </div>
                 </div>
                 
-                <div class="industry-card bg-white shadow-md hover:shadow-lg">
-                    <img src="https://images.unsplash.com/photo-1555529669-e69e7aa0ba9a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" 
-                         alt="E-commerce & Retail" class="industry-image">
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-gray-800 mb-4">E-commerce & Retail</h3>
-                        <p class="text-gray-600 mb-4">Eficientizarea operațiunilor pentru a vă putea concentra pe creștere.</p>
-                        
-                        <div class="mb-4">
-                            <h4 class="font-semibold text-gray-700 mb-2">Provocări Cheie:</h4>
-                            <div>
-                                <span class="challenge-badge">Acuratețea stocurilor</span>
-                                <span class="challenge-badge">Prețurile concurenței</span>
-                                <span class="challenge-badge">Procesarea comenzilor</span>
-                                <span class="challenge-badge">Supraîncărcare cu date</span>
-                            </div>
-                        </div>
-                        
-                        <div>
-                            <h4 class="font-semibold text-gray-700 mb-2">Soluțiile Noastre:</h4>
-                            <ul>
-                                <li class="solution-point">Management automatizat al datelor despre clienți și vânzări</li>
-                                <li class="solution-point">Monitorizare dinamică a prețurilor concurenței</li>
-                                <li class="solution-point">Curățarea și organizarea datelor</li>
-                                <li class="solution-point">Analize de vânzări instantanee</li>
-                            </ul>
-                        </div>
+                <div class="gallery-item rounded-xl overflow-hidden relative group">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Clop_traditional_Oas.jpg/1280px-Clop_traditional_Oas.jpg" alt="Clop Oșănesc" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-80"></div>
+                    <div class="absolute bottom-0 left-0 p-6 text-white">
+                        <h3 class="text-xl font-bold">Clopul cu Pene de Păun</h3>
+                        <p class="mt-1">Simbol al bărbăției și tradiției</p>
+                    </div>
+                    <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition bg-black bg-opacity-40">
+                        <span class="text-white font-semibold border border-white px-4 py-2 rounded">Află mai multe</span>
                     </div>
                 </div>
                 
-                <div class="industry-card bg-white shadow-md hover:shadow-lg">
-                    <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" 
-                         alt="Logistică & Lanț de Aprovizionare" class="industry-image">
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-gray-800 mb-4">Logistică & Lanț de Aprovizionare</h3>
-                        <p class="text-gray-600 mb-4">Aducem claritate în operațiuni complexe.</p>
-                        
-                        <div class="mb-4">
-                            <h4 class="font-semibold text-gray-700 mb-2">Provocări Cheie:</h4>
-                            <div>
-                                <span class="challenge-badge">Urmărirea livrărilor</span>
-                                <span class="challenge-badge">Exces de documente</span>
-                                <span class="challenge-badge">Optimizarea rutelor</span>
-                                <span class="challenge-badge">Întârzieri date de pe teren</span>
-                            </div>
-                        </div>
-                        
-                        <div>
-                            <h4 class="font-semibold text-gray-700 mb-2">Soluțiile Noastre:</h4>
-                            <ul>
-                                <li class="solution-point">Extragere automată din documente de transport</li>
-                                <li class="solution-point">Dashboard-uri live pentru logistică și performanță</li>
-                                <li class="solution-point">Tablouri de bord în timp real</li>
-                                <li class="solution-point">Rutare eficientă a datelor și documentelor de pe teren</li>
-                            </ul>
-                        </div>
+                <div class="gallery-item rounded-xl overflow-hidden relative group">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Poarta_Oas.jpg/1280px-Poarta_Oas.jpg" alt="Arhitectura Porților" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-80"></div>
+                    <div class="absolute bottom-0 left-0 p-6 text-white">
+                        <h3 class="text-xl font-bold">Arhitectura Porților</h3>
+                        <p class="mt-1">Măiestria sculpturii în lemn</p>
+                    </div>
+                    <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition bg-black bg-opacity-40">
+                        <span class="text-white font-semibold border border-white px-4 py-2 rounded">Află mai multe</span>
                     </div>
                 </div>
                 
-                <div class="industry-card bg-white shadow-md hover:shadow-lg">
-                    <img src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" 
-                         alt="Juridic & Conformitate" class="industry-image">
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-gray-800 mb-4">Juridic & Conformitate</h3>
-                        <p class="text-gray-600 mb-4">Management securizat al documentelor pentru echipele juridice.</p>
-                        
-                        <div class="mb-4">
-                            <h4 class="font-semibold text-gray-700 mb-2">Provocări Cheie:</h4>
-                            <div>
-                                <span class="challenge-badge">Volum mare de documente</span>
-                                <span class="challenge-badge">Revizuire contracte</span>
-                                <span class="challenge-badge">Monitorizare reglementări</span>
-                                <span class="challenge-badge">Securitatea datelor</span>
-                            </div>
-                        </div>
-                        
-                        <div>
-                            <h4 class="font-semibold text-gray-700 mb-2">Soluțiile Noastre:</h4>
-                            <ul>
-                                <li class="solution-point">Soluții AI securizate, instalate local (on-premise)</li>
-                                <li class="solution-point">Analiză și revizuire a contractelor cu ajutorul AI</li>
-                                <li class="solution-point">Instrumente automate de monitorizare a conformității</li>
-                                <li class="solution-point">Portaluri de cunoștințe juridice cu acces rapid</li>
-                            </ul>
-                        </div>
+                <div class="gallery-item rounded-xl overflow-hidden relative group">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Costume_populare_din_zona_Oasului.jpg" alt="Costume Populare" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-80"></div>
+                    <div class="absolute bottom-0 left-0 p-6 text-white">
+                        <h3 class="text-xl font-bold">Costumul Popular</h3>
+                        <p class="mt-1">Bogăție de culori și simboluri</p>
+                    </div>
+                    <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition bg-black bg-opacity-40">
+                        <span class="text-white font-semibold border border-white px-4 py-2 rounded">Află mai multe</span>
                     </div>
                 </div>
-                
-                <div class="industry-card bg-white shadow-md hover:shadow-lg">
-                    <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" 
-                         alt="Sănătate" class="industry-image">
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-gray-800 mb-4">Sănătate</h3>
-                        <p class="text-gray-600 mb-4">Eficientizarea sarcinilor administrative pentru a vă concentra pe îngrijirea pacienților.</p>
-                        
-                        <div class="mb-4">
-                            <h4 class="font-semibold text-gray-700 mb-2">Provocări Cheie:</h4>
-                            <div>
-                                <span class="challenge-badge">Formulare pacienți</span>
-                                <span class="challenge-badge">Verificare asigurări</span>
-                                <span class="challenge-badge">Volum de documente</span>
-                                <span class="challenge-badge">Conformitate HIPAA</span>
-                            </div>
-                        </div>
-                        
-                        <div>
-                            <h4 class="font-semibold text-gray-700 mb-2">Soluțiile Noastre:</h4>
-                            <ul>
-                                <li class="solution-point">Captură inteligentă a datelor din formularele pacienților</li>
-                                <li class="solution-point">AI securizat (on-premise) pentru sarcini administrative</li>
-                                <li class="solution-point">Automatizarea fluxurilor de lucru</li>
-                                <li class="solution-point">Integrări simplificate cu sistemele EHR</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="industry-card bg-white shadow-md hover:shadow-lg">
-                    <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" 
-                         alt="Imobiliare" class="industry-image">
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-gray-800 mb-4">Imobiliare</h3>
-                        <p class="text-gray-600 mb-4">Automatizarea fluxurilor de lucru în managementul proprietăților.</p>
-                        
-                        <div class="mb-4">
-                            <h4 class="font-semibold text-gray-700 mb-2">Provocări Cheie:</h4>
-                            <div>
-                                <span class="challenge-badge">Managementul chiriilor</span>
-                                <span class="challenge-badge">Actualizarea listărilor</span>
-                                <span class="challenge-badge">Comunicare cu chiriașii</span>
-                                <span class="challenge-badge">Urmărire clienți potențiali</span>
-                            </div>
-                        </div>
-                        
-                        <div>
-                            <h4 class="font-semibold text-gray-700 mb-2">Soluțiile Noastre:</h4>
-                            <ul>
-                                <li class="solution-point">Extragerea și analiza contractelor de închiriere cu AI</li>
-                                <li class="solution-point">Listări automate</li>
-                                <li class="solution-point">Boți inteligenți pentru comunicarea cu chiriașii</li>
-                                <li class="solution-point">Dashboard-uri de performanță a portofoliului în timp real</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="glass-card p-8 text-center mt-16">
-                <h2 class="text-2xl font-bold text-gray-800 mb-4">Industria Dumneavoastră Nu Este pe Listă?</h2>
-                <p class="text-gray-600 max-w-2xl mx-auto mb-6">
-                    Soluțiile noastre sunt adaptabile pentru multe sectoare. Haideți să discutăm cum putem personaliza expertiza noastră în automatizare și AI pentru nevoile specifice ale afacerii dumneavoastră.
-                </p>
-                <button class="bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-3 px-8 rounded-lg transition duration-300 transform hover:scale-105">
-                    Programați o Consultanță
-                </button>
             </div>
         </div>
-    </main>
+    </section>
 
-    <footer class="bg-slate-900 text-slate-300 py-16 px-6 lg:px-16 mt-16">
-        <div class="max-w-7xl mx-auto">
-            <div class="grid md:grid-cols-4 gap-12">
-                <div>
-                    <div class="flex items-center mb-6">
-                        <div class="w-10 h-10 rounded-lg gradient-bg flex items-center justify-center text-white font-bold text-xl mr-2">AIQ</div>
-                        <span class="text-xl font-bold text-white">AutomateIQ</span>
+    <!-- Upcoming Events Section -->
+    <section class="py-20 bg-gradient-to-b from-light to-white">
+        <div class="container mx-auto px-4 max-w-6xl">
+            <div class="text-center mb-16">
+                <span class="text-accent font-semibold uppercase tracking-wider">Evenimente iminente</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-primary mt-2">Ce urmează în lunile Iunie & Iulie</h2>
+                <div class="mt-4 mb-6 w-20 h-1 bg-secondary mx-auto"></div>
+                <p class="max-w-2xl mx-auto text-lg text-gray-600">Vara în Țara Oașului aduce laolaltă tradiție, muzică, petrecere și meșteșuguri de neuitat.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden event-card transition duration-300">
+                    <img src="https://www.presasm.ro/wp-content/uploads/2023/05/sambra-oilor-negresti-oas-2023-scaled.jpg" 
+                         alt="Sâmbra Oilor" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex items-center text-secondary mb-2">
+                            <i class="far fa-calendar-alt mr-2"></i>
+                            <span>15-16 Iunie, 2024</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-dark mb-2">Festivalul 'Sâmbra Oilor'</h3>
+                        <p class="text-gray-600 mb-4">Întâlnirea tradițională a ciobanilor și a turmelor, cu expoziții, degustări și ritualuri ancestrale.</p>
+                        <a href="#" class="text-primary font-semibold hover:text-accent flex items-center">
+                            Detalii <i class="fas fa-arrow-right ml-2 text-xs"></i>
+                        </a>
                     </div>
-                    <p class="mb-6 text-slate-400">
-                        Soluții de automatizare bazate pe AI care ajută afacerile să lucreze mai inteligent.
-                    </p>
-                    <div class="flex space-x-4">
-                        <a href="#" class="text-slate-400 hover:text-white transition"><i class="fab fa-twitter text-xl"></i></a>
-                        <a href="#" class="text-slate-400 hover:text-white transition"><i class="fab fa-linkedin text-xl"></i></a>
-                        <a href="#" class="text-slate-400 hover:text-white transition"><i class="fab fa-facebook text-xl"></i></a>
+                </div>
+                
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden event-card transition duration-300">
+                    <img src="https://via.placeholder.com/600x400?text=T%C3%A2rgul+Me%C8%99te%C8%99ugarilor" 
+                         alt="Târgul Meșteșugarilor" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex items-center text-secondary mb-2">
+                            <i class="far fa-calendar-alt mr-2"></i>
+                            <span>22-23 Iunie, 2024</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-dark mb-2">Târgul Meșteșugarilor din Negrești-Oaș</h3>
+                        <p class="text-gray-600 mb-4">Adunarea artiștilor populari cu expoziții, demonstrații practice și ateliere creative.</p>
+                        <a href="#" class="text-primary font-semibold hover:text-accent flex items-center">
+                            Detalii <i class="fas fa-arrow-right ml-2 text-xs"></i>
+                        </a>
                     </div>
                 </div>
-                <div>
-                    <h4 class="text-white font-bold text-lg mb-6">Soluții</h4>
-                    <ul class="space-y-3">
-                        <li><a href="../solutions/servicii.html" class="hover:text-white transition text-slate-400">Automatizarea Fluxurilor</a></li>
-                        <li><a href="../solutions/servicii.html" class="hover:text-white transition text-slate-400">AI pentru Documente</a></li>
-                        <li><a href="../solutions/servicii.html" class="hover:text-white transition text-slate-400">Transformarea Datelor</a></li>
-                        <li><a href="../solutions/servicii.html" class="hover:text-white transition text-slate-400">Asistenți AI</a></li>
-                    </ul>
+                
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden event-card transition duration-300">
+                    <img src="https://via.placeholder.com/600x400?text=Seri+de+Folclor" 
+                         alt="Seri de Folclor" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex items-center text-secondary mb-2">
+                            <i class="far fa-calendar-alt mr-2"></i>
+                            <span>În fiecare Vineri, Iunie-Iulie</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-dark mb-2">Seri de Folclor în aer liber</h3>
+                        <p class="text-gray-600 mb-4">Petreceri populare cu muzică tradițională locală, dansuri și atmosferă autentică.</p>
+                        <a href="#" class="text-primary font-semibold hover:text-accent flex items-center">
+                            Detalii <i class="fas fa-arrow-right ml-2 text-xs"></i>
+                        </a>
+                    </div>
                 </div>
-                <div>
-                    <h4 class="text-white font-bold text-lg mb-6">Companie</h4>
-                    <ul class="space-y-3">
-                        <li><a href="../despre.html" class="hover:text-white transition text-slate-400">Despre Noi</a></li>
-                        <li><a href="../index-ro.html#careers" class="hover:text-white transition text-slate-400">Cariere</a></li>
-                        <li><a href="../index-ro.html#blog" class="hover:text-white transition text-slate-400">Blog</a></li>
-                        <li><a href="#" class="hover:text-white transition text-slate-400">Contact</a></li>
-                    </ul>
-                </div>
-                 <div>
-                    <h4 class="text-white font-bold text-lg mb-6">Resurse</h4>
-                    <ul class="space-y-3">
-                        <li><a href="#" class="hover:text-white transition text-slate-400">Documentație</a></li>
-                        <li><a href="#" class="hover:text-white transition text-slate-400">Referință API</a></li>
-                        <li><a href="#" class="hover:text-white transition text-slate-400">Comunitate</a></li>
-                    </ul>
+                
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden event-card transition duration-300">
+                    <img src="https://www.cjsm.ro/wp-content/uploads/2021/08/olarit-vama.jpg" 
+                         alt="Ateliere de Olărit" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex items-center text-secondary mb-2">
+                            <i class="far fa-calendar-alt mr-2"></i>
+                            <span>10-20 Iulie, 2024</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-dark mb-2">Ateliere de olărit pentru turiști</h3>
+                        <p class="text-gray-600 mb-4">Workshop-uri practice în olărit tradițional sub îndrumarea meșterilor de la Vama.</p>
+                        <a href="#" class="text-primary font-semibold hover:text-accent flex items-center">
+                            Detalii <i class="fas fa-arrow-right ml-2 text-xs"></i>
+                        </a>
+                    </div>
                 </div>
             </div>
-            <div class="border-t border-slate-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
-                <p class="text-slate-400">© 2025 AutomateIQ. Toate drepturile rezervate.</p>
-                <div class="mt-4 md:mt-0">
-                    <a href="#" class="text-slate-400 hover:text-white mr-6">Politică de Confidențialitate</a>
-                    <a href="#" class="text-slate-400 hover:text-white">Termeni și Condiții</a>
+        </div>
+    </section>
+
+    <!-- Family Activities Section -->
+    <section id="activities" class="py-20 bg-light">
+        <div class="container mx-auto px-4 max-w-6xl">
+            <div class="text-center mb-16">
+                <span class="text-accent font-semibold uppercase tracking-wider">Împreună cu familia</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-primary mt-2">Activități Family Friendly</h2>
+                <div class="mt-4 mb-6 w-20 h-1 bg-secondary mx-auto"></div>
+                <p class="max-w-2xl mx-auto text-lg text-gray-600">Plimbări relaxante, activități creative și multe altele pentru întreaga familie.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white rounded-xl shadow-lg p-6 flex flex-col">
+                    <div class="bg-secondary text-white w-12 h-12 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-tree text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-dark mb-3">O zi la Muzeul Satului</h3>
+                    <p class="text-gray-600 mb-4 flex-grow">Descoperiți un muzeu etnografic în aer liber cu case tradiționale, gospodării și meșteșuguri.</p>
+                    <div class="text-sm">
+                        <span class="text-secondary mr-3"><i class="fas fa-clock mr-1"></i> 2-4 ore</span>
+                        <span class="text-primary"><i class="fas fa-child mr-1"></i> Toate vârstele</span>
+                    </div>
                 </div>
+                
+                <div class="bg-white rounded-xl shadow-lg p-6 flex flex-col">
+                    <div class="bg-secondary text-white w-12 h-12 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-water text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-dark mb-3">Drumeții spre cascada Șipot</h3>
+                    <p class="text-gray-600 mb-4 flex-grow">Plimbare ușoară pe potecilor de munte către o cascadă pitorească ideală pentru copii.</p>
+                    <div class="text-sm">
+                        <span class="text-secondary mr-3"><i class="fas fa-clock mr-1"></i> 3-5 ore</span>
+                        <span class="text-primary"><i class="fas fa-child mr-1"></i> > 6 ani</span>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-xl shadow-lg p-6 flex flex-col">
+                    <div class="bg-secondary text-white w-12 h-12 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-palette text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-dark mb-3">Ateliere de pictură pe ceramică</h3>
+                    <p class="text-gray-600 mb-4 flex-grow">Copiii învață tehnici de pictură tradițională sub îndrumarea artiștilor locali.</p>
+                    <div class="text-sm">
+                        <span class="text-secondary mr-3"><i class="fas fa-clock mr-1"></i> 1-2 ore</span>
+                        <span class="text-primary"><i class="fas fa-child mr-1"></i> > 5 ani</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white pt-20 pb-10">
+        <div class="container mx-auto px-4 max-w-6xl">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+                <div>
+                    <h4 class="text-xl font-bold mb-4">Țara Oașului</h4>
+                    <p class="mb-4 text-gray-300">Descoperă farmecul autentic al unei zone unice în nord-vestul României, unde tradițiile se păstrează vii.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-300 hover:text-white"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-gray-300 hover:text-white"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-gray-300 hover:text-white"><i class="fab fa-youtube"></i></a>
+                        <a href="#" class="text-gray-300 hover:text-white"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-xl font-bold mb-4">Link-uri utile</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-300 hover:text-white">Planifică vizita</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white">Harta turistică</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white">Ghid local</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white">Întrebări frecvente</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-xl font-bold mb-4">Destinații</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-300 hover:text-white">Negrești-Oaș</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white">Vama</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white">Racșa</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white">Bixad</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white">Muncel</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-xl font-bold mb-4">Newsletter</h4>
+                    <p class="mb-4 text-gray-300">Abonează-te pentru noutăți și oferte exclusive</p>
+                    <form class="flex flex-col">
+                        <input type="email" placeholder="Adresa ta de email" class="px-4 py-2 rounded mb-3 text-dark">
+                        <button type="submit" class="bg-accent hover:bg-red-600 text-white font-semibold py-2 px-4 rounded transition">
+                            Abonează-te
+                        </button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="pt-8 border-t border-gray-700 text-center text-gray-400">
+                <p>&copy; 2023 Țara Oașului. Toate drepturile rezervate.</p>
             </div>
         </div>
     </footer>
     
     <script>
-        const mobileMenuButton = document.getElementById('mobileMenuButton');
-        const mobileMenu = document.getElementById('mobileMenu');
-       
-        mobileMenuButton.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-            const barsIcon = mobileMenuButton.querySelector('.fa-bars');
-            const timesIcon = mobileMenuButton.querySelector('.fa-times');
-            barsIcon.classList.toggle('hidden');
-            timesIcon.classList.toggle('hidden');
+        // Mobile Menu Toggle
+        document.getElementById('menu-toggle').addEventListener('click', function() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();a
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
         });
     </script>
 </body>
